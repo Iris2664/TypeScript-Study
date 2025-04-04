@@ -1,14 +1,13 @@
-import { createSolutionBuilderWithWatchHost } from "typescript";
-
 const file = Bun.file("output.txt");
 const source = await file.text();
-console.log(source);
 
-const now = new Date();
-
+const memo: string = Bun.argv.pop() ?? "";
 
 const writer = file.writer();
 writer.write(source);
 writer.write("\n");
-writer.write(createSolutionBuilderWithWatchHost.toString());
+writer.write(memo);
 writer.end();
+
+const result = await file.text();
+console.log(result);
