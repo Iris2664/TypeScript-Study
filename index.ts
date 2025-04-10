@@ -1,5 +1,5 @@
 import { Database } from "bun:sqlite";
-import { initalizeItemTable } from "./db.ts";
+import { createItem, initalizeItemTable } from "./db.ts";
 
 const db = new Database("sqlite.db");
 
@@ -12,13 +12,13 @@ if (Bun.argv.length === 4) {
 
     switch (command) {
         case "memo":
-            //TODO: メモを追加する
+           createItem(db, content, "memo");
             break;
         case "todo":
-            //TODO: TODOを追加する
+            createItem(db, content, "todo");
             break;
         case "done":
-            //TODO: TODOを完了する
+            createItem(db, content, "done");
             break;
         default:
             throw new Error("不正なコマンドです．");
