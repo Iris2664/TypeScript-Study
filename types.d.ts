@@ -4,4 +4,5 @@ export interface Item {
     id: number;
     content: string;
     kind: Kind;
+    archived: boolean;
 }
